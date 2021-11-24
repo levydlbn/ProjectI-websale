@@ -1,0 +1,166 @@
+.signup__page {
+    background-color: white;
+}
+
+.signup__page-header {
+    margin: 0 auto;
+    height: 85px;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+}
+
+.signup__page-header-logo {
+    display: flex;
+    align-items: center;
+    margin: 0 30px;
+}
+
+.signup__page-header-logo-icon {
+    max-width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.signup__page-header-logo-text {
+    font-size: 3.5rem;
+}
+
+.signup__page-header-title {
+    font-size: 3rem;
+}
+
+.signup__page-content {
+    min-width: 1200px;
+    height: 600px;
+    background-color: rgb(87, 87, 234);
+    display: flex;
+}
+
+.signup__page-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.signup__page-content-left {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 200px;
+}
+
+.signup__page-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup__page-logo-icon {
+    width: 200px;
+    height: 200px;
+}
+
+.signup__page-logo-tilte {
+    font-size: 8rem;
+    color: white;
+}
+
+.signup__page-introduc {
+    max-width: 420px;
+    height: 50px;
+    margin-left: 60px;
+    line-height: 4rem;
+    font-size: 3rem;
+    color: white;
+}
+
+.signup__page-content-right {
+    width: 500px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.auth__form-container {
+    width: 400px;
+    height: 480px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.auth__form-content {
+    margin: 34px 30px;
+}
+
+.auth__form-container-title {
+    margin-bottom: 40px;
+}
+
+.auth__form-content-title {
+    font-size: 2.4rem;
+    color: var(--text-color);
+}
+
+.auth__form-group {
+    margin-bottom: 28px;
+}
+
+.auth__form-group.auth__form-group-login {
+    margin-bottom: 34px;
+}
+
+.auth__form-input {
+    width: 334px;
+    height: 34px;
+}
+
+.btn-signup {
+    width: 340px;
+    height: 40px;
+}
+
+.btn-signup:hover {
+    background-color: rgb(71, 71, 253);
+}
+
+.auth__form-text {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.auth__form-text-link {
+    color: blue;
+}
+
+.auth__form-group-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth__form-group-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.auth__form-group-info-account {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.auth__form-info-account {
+    font-size: 1.6rem;
+    color: rgb(98, 96, 96);
+}
+
+.auth__form-info-login {
+    font-size: 1.6rem;
+    color: blue;
+}
