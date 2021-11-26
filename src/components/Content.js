@@ -9,28 +9,58 @@ import ImageHeader3 from "../static/image/vietnam_football_team_wallpaper.jpg"
 import ImageHeader4 from "../static/image/banner_adidasshoe.jpg"
 import ImageHeader5 from "../static/image/slideshow_11140x438.jpg"
 import ImageHeader6 from "../static/image/slideshow_21140x438.jpg"
+// import Iconquality from "../static/image/101-1010604_24-hour-delivery-guarantee-hd-png-download.png"
 
-import { FaChevronDown, FaChevronLeft, FaChevronRight, FaList } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { FaChevronDown, FaChevronLeft, FaChevronRight, FaList, FaShoppingCart } from 'react-icons/fa'
 
-const Content = () => {
+const tabProducts = [
+    { tab: 'clothes', title: 'Quần áo bóng đá' },
+    { tab: 'shoes', title: 'Giày áo bóng đá' },
+    { tab: 'gloves', title: 'Găng tay thủ môn' },
+    { tab: 'socks', title: 'Tất bóng đá' },
+    { tab: 'balls', title: 'Quả bóng đá' }
+]
+
+const Content = ({ listProducts }) => {
 
     const imageHeader = [ImageHeader1, ImageHeader2, ImageHeader3, ImageHeader4, ImageHeader5, ImageHeader6]
     const [imgHeader, setImgHeader] = useState(imageHeader[0])
+
+    const [typeProduct, setTypeProduct] = useState('')
+
+    // xem lai
+    const fullProduct = listProducts
 
     useEffect(() => {
         setTimeout(() => {
             setImgHeader(imageHeader[Math.floor(Math.random() * 6)])
         }, 15000)
 
-        console.log('render')
-            // return () => clearTimeout(timeImg)
+        // return () => clearTimeout(timeImg)
     }, [imgHeader])
+
+    //xem lai
+    const handleAddProduct = () => {
+        console.log("sfsdfdsf")
+    }
 
     // setTimeout(() => {
     //     setImgHeader(imageHeader[Math.floor(Math.random()*7)])
     //     console.log("render")
     // },10000000)
+    // useState
+    // 1. Init state: 
+    // 2. Actions
+    // 
+    // useReducer
+    // 1. Init state
+    // 2. Actions
+    // 3. Reducer
+    // 4. Dispatch
+
+    useEffect(() => {
+
+    }, [typeProduct])
 
 
     return ( <
@@ -52,43 +82,37 @@ const Content = () => {
         <
         div className = "main__content" >
         <
-        div className = "content__sidebar col c-3" >
+        div className = "content__sidebar col c-2" >
         <
         div className = "content__sidebar-title" >
         <
         div className = "content__sidebar-title-icon" > < FaList / > < /div> <
-        p className = "content__sidebar-title-text" > Danh mục sản phẩm < /p> <
+        p className = "content__sidebar-title-text" > Tất cả sản phẩm < /p> <
         /div> <
-        div className = "content__sidebar-list" >
+        div className = "content__sidebar-list" > {
+            tabProducts.map(tabProduct => ( <
+                nav className = "content__sidebar-item"
+                key = { tabProduct.tab }
+                style = {
+                    typeProduct === tabProduct.tab ? {
+                        backgroundColor: '#8e8efa'
+                    } : {}
+                }
+                onClick = {
+                    () => setTypeProduct(tabProduct.tab) } >
+                <
+                p className = "content__sidebar-item-text"
+                style = {
+                    { fontSize: 14, marginLeft: 10 } } > { tabProduct.title } <
+                /p> <
+                /nav>
+            ))
+        }
+
         <
-        nav className = "content__sidebar-item" >
-        <
-        Link to = "/shirts"
-        className = "content__sidebar-item-text" > Quần áo bóng đá < /Link> <
-        /nav> <
-        nav className = "content__sidebar-item" >
-        <
-        Link to = "/shoes"
-        className = "content__sidebar-item-text" > Giày bóng đá < /Link> <
-        /nav> <
-        nav className = "content__sidebar-item" >
-        <
-        Link to = "/gloves"
-        className = "content__sidebar-item-text" > Găng tay thủ môn < /Link> <
-        /nav> <
-        nav className = "content__sidebar-item" >
-        <
-        Link to = "/socks"
-        className = "content__sidebar-item-text" > Tất bóng đá < /Link> <
-        /nav> <
-        nav className = "content__sidebar-item last" >
-        <
-        Link to = "/balls"
-        className = "content__sidebar-item-text" > Quả bóng đá < /Link> <
-        /nav> <
         /div> <
         /div> <
-        div className = "content__product col c-9" >
+        div className = "content__product col c-10" >
         <
         div className = "content__product-control" >
         <
@@ -116,7 +140,34 @@ const Content = () => {
 
         <
         /div> <
-        div className = "content__product-container" > adfsgfd < /div> <
+        div className = "content__product-container row" > {
+            fullProduct.map(product => ( <
+                div className = "content__product-item col c-3" >
+                <
+                div className = "content__product-item-container"
+                key = { product.id } >
+                <
+                img src = { product.thum }
+                alt = { product.name }
+                className = "product__img" / >
+                <
+                div className = "product__info" >
+                <
+                div className = "product__info-describe" > { product.describe } <
+                /div> <
+                div className = "product__info-price-origin" >
+                <
+                p className = "product__info-price" > Giá: { product.price } < /p> <
+                button onClick = {
+                    () => handleAddProduct(product) }
+                className = "btn btn-add-to-cart" > < FaShoppingCart / > < /button> <
+                /div>         <
+                /div> <
+                /div> <
+                /div>
+            ))
+        } <
+        /div> <
         /div> <
         /div> <
         /div>          <

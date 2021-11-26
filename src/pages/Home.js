@@ -3,28 +3,21 @@ import Header from "../components/Header"
 import Content from "../components/Content"
 import Footer from "../components/Footer"
 
+import AuthProvider from "../auth/AuthContext"
+
 // import Signup from "../components/user/Signup"
 
-const Home = () => {
+const Home = ({ listProducts }) => {
     return ( <
-        div >
-        <
-        div >
+        AuthProvider >
         <
         Header / >
         <
-        /div> <
-        div >
-        <
-        Content / >
-        <
-        /div> <
-        div >
-        <
+        Content listProducts = { listProducts }
+        /> <
         Footer / >
         <
-        /div> <
-        /div>
+        /AuthProvider>
     )
 }
 

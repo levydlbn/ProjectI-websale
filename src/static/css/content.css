@@ -32,7 +32,7 @@
 .content__sidebar-title-icon {
     font-size: 1.6rem;
     margin-right: 10px;
-    margin-left: 20px;
+    margin-left: 12px;
 }
 
 .content__sidebar-title-text {
@@ -57,8 +57,8 @@
 }
 
 .content__sidebar-item:hover {
-    background-color: rgb(132, 132, 248);
     cursor: pointer;
+    background-color: rgb(142, 142, 250);
 }
 
 .content__sidebar-item-text {
@@ -75,6 +75,9 @@
     display: flex;
     justify-content: space-between;
     background-color: rgb(245, 245, 245);
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgb(224, 224, 224);
+    overflow: hidden;
 }
 
 .content__product-control-sort {
@@ -118,6 +121,7 @@
 }
 
 .btn-sort {
+    min-width: 100px;
     margin: 0 5px;
     background-color: white;
     color: var(--text-color);
@@ -152,4 +156,80 @@
 
 .content__product-control-page-direction-icon:hover {
     cursor: pointer;
+}
+
+.product__img {
+    width: 100%;
+}
+
+.Icon__quality {
+    position: relative;
+    z-index: 9;
+    height: 50px;
+    width: 50px;
+    right: 20px;
+    top: 20%;
+    background-color: aqua;
+}
+
+.content__product-item-container {
+    height: 92%;
+    margin: 20px 0 10px 0;
+    border-radius: 1px;
+    box-shadow: 0 0 10px rgb(216, 216, 217);
+}
+
+.content__product-item-container:hover {
+    position: relative;
+    cursor: pointer;
+    top: -5px;
+    background-color: white;
+    box-shadow: 0 10px 20px rgb(157, 157, 217);
+    border-color: rebeccapurple;
+    outline: 1px solid blue;
+}
+
+.product__info {
+    padding: 10px;
+}
+
+.product__info-describe {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.product__info-price-origin {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.product__info-price {
+    font-size: 1.2rem;
+    color: rgb(255, 39, 39);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.btn.btn-add-to-cart {
+    position: relative;
+    width: 46%;
+    background-color: rgb(142, 142, 250);
+    font-size: 2rem;
+}
+
+.btn.btn-add-to-cart:hover {
+    background-color: blue;
+    color: rgb(234, 255, 0);
+    top: -2px;
+    right: -2px;
+    box-shadow: -4px 4px 10px rgb(131, 222, 252);
+    font-size: 2.4rem;
 }

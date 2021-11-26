@@ -20,8 +20,8 @@ const Header = () => {
         nav className = "header__navbar-left" >
         <
         span className = "header__navbar-info-telephone" > HOTLINE: M.BẮC - 0965.163 .098 / M.NAM - 0843.234 .123 < /span> <
-        span className = "header__navbar-info-time" > Thứ 2 - Thứ 7: 8 am - 6 pm < /span> < /
-        nav >
+        span className = "header__navbar-info-time" > Thứ 2 - Thứ 7: 8 am - 6 pm < /span> <
+        /nav>
 
         <
         nav className = "header__navbar-right" >
@@ -30,32 +30,32 @@ const Header = () => {
         <
         li >
         <
-        Link to = "/user/signup" > Đăng ký < /Link> < /
-        li > <
+        Link to = "/user/signup" > Đăng ký < /Link> <
+        /li> <
         li >
         <
-        Link to = "/user/login" > Đăng nhập < /Link> < /
-        li > <
-        span className = "header__navbar-item-telephone" > LH: 1900 1009 < /span> < /
-        div > <
+        Link to = "/user/login" > Đăng nhập < /Link> <
+        /li> <
+        span className = "header__navbar-item-telephone" > LH: 1900 1009 < /span> <
+        /div> <
         div className = "header__navbar-list-support" >
         <
         li className = "header__navbar-item-support header__navbar-item-instruct auth-form-help-separate" >
         <
-        Link to = "instruct" > Hướng dẫn < /Link> < /
-        li > <
+        Link to = "instruct" > Hướng dẫn < /Link> <
+        /li> <
         li className = "header__navbar-item-support header__navbar-item-pay auth-form-help-separate" >
         <
-        Link to = "pay" > Thanh toán < /Link> < /
-        li > <
+        Link to = "pay" > Thanh toán < /Link> <
+        /li> <
         li className = "header__navbar-item-support header__navbar-item-introduce" >
         <
-        Link to = "introduce" > Giới thiệu < /Link> < /
-        li > <
-        /div> < /
-        nav > <
-        /div> < /
-        div >
+        Link to = "introduce" > Giới thiệu < /Link> <
+        /li> <
+        /div> <
+        /nav> <
+        /div> <
+        /div>
 
         <
         div className = "header__search" >
@@ -71,8 +71,8 @@ const Header = () => {
         alt = "icon shop"
         className = "header__search-logo-icon" / >
         <
-        p className = "header__search-logo-text" > Sport < /p> < /
-        Link > <
+        p className = "header__search-logo-text" > Sport < /p> <
+        /Link> <
         /div> <
         div className = "header__search-filter" >
         <
@@ -84,8 +84,8 @@ const Header = () => {
         <
         div className = "header__search-filter-select" >
         <
-        div className = "header__search-filter-select-icon" > < FaSistrix / > < /div> < /
-        div > <
+        div className = "header__search-filter-select-icon" > < FaSistrix / > < /div> <
+        /div> <
         /div> <
         div className = "header__search-filter-pages" >
         <
@@ -102,35 +102,35 @@ const Header = () => {
         Link to = "/socks"
         className = "header__search-filter-page-item" > Tất bóng đá < /Link> <
         Link to = "/balls"
-        className = "header__search-filter-page-item" > Quả bóng đá < /Link> < /
-        ul > <
-        /nav> < /
-        div > <
+        className = "header__search-filter-page-item" > Quả bóng đá < /Link> <
+        /ul> <
+        /nav> <
+        /div> <
         /div> <
         div className = "header__search-cart" >
         <
         div className = "header__search-cart-wrap" >
         <
-        Link to = "/user/product" >
+        Link to = "/user/CartProduct" >
         <
         div className = "header__search-cart-icon" >
         <
         FaShoppingCart / >
         <
-        /div> < /
-        Link > <
+        /div> <
+        /Link> <
         div className = "header__search-cart-list" >
         <
         img src = { ImageCart }
         alt = "sdfsdfds"
         className = "header__search-cart-noproduct" / >
         <
-        p className = "header__search-cart-noproduct-msg" > Chưa có sản phẩm < /p> < /
-        div > <
-        /div> < /
-        div > <
-        /div> < /
-        div >
+        p className = "header__search-cart-noproduct-msg" > Chưa có sản phẩm < /p> <
+        /div> <
+        /div> <
+        /div>  <
+        /div> <
+        /div>
 
         <
         /div>

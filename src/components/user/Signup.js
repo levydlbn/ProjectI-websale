@@ -102,7 +102,7 @@ const Signup = () => {
         /div> <
         div >
         <
-        p className = "signup__page-introduc" > Nền tảng thương mại điện tử được yêu thích ở Đông Nam Á < /p> <
+        p className = "signup__page-introduc" > Shop đồ thể thao được yêu thích ở Đông Nam Á < /p> <
         /div> <
         /div> <
         div className = "signup__page-content-right" >

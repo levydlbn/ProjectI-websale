@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AuthProvider from './auth/AuthContext';
-import Header from './components/Header';
+import Cart from './components/user/Cart';
 // import './App.css'
 import Login from './components/user/Login';
 import Signup from './components/user/Signup';
@@ -18,26 +18,40 @@ import NotFound from './pages/NotFound';
 // const Home = React.lazy(() => import('./pages/Home'));
 
 function App() {
+    const [listProducts, setListProducts] = useState([])
 
+    useEffect(() => {
+        fetch(`http://localhost:3000/product`)
+            .then(res => res.json())
+            .then(products => {
+                setListProducts(products)
+                console.log("render")
+            })
+    }, [])
     return ( <
-        AuthProvider >
-        <
-        Routes >
-        <
-        Route path = "/"
-        element = { < Home / > }
-        /> <
-        Route path = "/user/signup"
-        element = { < Signup / > }
-        /> <
-        Route path = "/user/login"
-        element = { < Login / > }
-        /> <
-        Route element = { < NotFound / > }
-        /> <
-        /Routes> <
-        /AuthProvider>     
-    );
-}
+            AuthProvider >
+            <
+            Routes >
+            <
+            Route path = "/"
+            element = { < Home listProducts = { listProducts }
+                />} / >
+                <
+                Route path = "/user/signup"
+                element = { < Signup / > }
+                /> <
+                Route path = "/user/login"
+                element = { < Login / > }
+                /> <
+                Route path = "user/CartProduct"
+                element = { < Cart listProducts = { listProducts }
+                    />} / >
+                    <
+                    Route element = { < NotFound / > }
+                    /> <
+                    /Routes> <
+                    /AuthProvider>     
+                );
+            }
 
-export default App;
+            export default App;
