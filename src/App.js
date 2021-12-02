@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect, useState, useRef } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import AuthProvider from './auth/AuthContext';
 import Cart from './components/user/Cart';
+import Checkout from './components/user/Checkout';
 // import './App.css'
 import Login from './components/user/Login';
 import Signup from './components/user/Signup';
@@ -16,18 +17,133 @@ import NotFound from './pages/NotFound';
 
 // lazy load - Code splitting
 // const Home = React.lazy(() => import('./pages/Home'));
+const tabProducts = [{ tab: 'full', title: 'TẤT CẢ SẢN PHẨM' },
+    { tab: 'clothes', title: 'Quần áo bóng đá' },
+    { tab: 'shoes', title: 'Giày áo bóng đá' },
+    { tab: 'gloves', title: 'Găng tay thủ môn' },
+    { tab: 'socks', title: 'Tất bóng đá' },
+    { tab: 'balls', title: 'Quả bóng đá' }
+]
 
 function App() {
+
+
+
+    const [listUser, setListUser] = useState([])
+    const [nowUser, setNowUser] = useState({ email: '', password: '' })
     const [listProducts, setListProducts] = useState([])
+    const [cartItem, setCartItem] = useState([])
+    const textSearchProductRef = useRef()
+
+    const [currentProduct, setCurrentProduct] = useState(listProducts)
+    const [typeProduct, setTypeProduct] = useState("full")
+
+    let loginNavigate = useNavigate()
 
     useEffect(() => {
         fetch(`http://localhost:3000/product`)
             .then(res => res.json())
             .then(products => {
                 setListProducts(products)
-                console.log("render")
             })
     }, [])
+
+    useEffect(() => {
+        fetch('http://localhost:3000/user')
+            .then(res => res.json())
+            .then(users => {
+                setListUser(users)
+            })
+    }, [])
+
+    useEffect(() => {
+        if (currentProduct.length === 0) {
+            setCurrentProduct(listProducts)
+        }
+    })
+
+    useEffect(() => {
+
+        if (typeProduct === "full") {
+            setCurrentProduct(listProducts)
+        } else {
+            const categoryProduct = listProducts.filter(product => product.category === typeProduct)
+            setCurrentProduct(categoryProduct)
+        }
+
+    }, [typeProduct])
+
+    const handleTypeProduct = (tabProduct) => {
+        setTypeProduct(tabProduct)
+    }
+
+
+
+    const handleSearchProduct = (e) => {
+        e.preventDefault()
+        const infoProductSearch = textSearchProductRef.current.value
+        setCurrentProduct(listProducts.filter(product => product.describe.toLowerCase().includes(infoProductSearch.toLowerCase())))
+    }
+
+    const handleAddProduct = (product) => {
+        const ProductExits = cartItem.find((item) => item.id === product.id)
+        if (ProductExits) {
+            setCartItem(cartItem.map((item) => item.id === product.id ? {...ProductExits, quantity: ProductExits.quantity + 1 } : item))
+        } else {
+            setCartItem([...cartItem, {...product, quantity: 1 }])
+            alert("Thêm vào giỏ hàng thành công")
+        }
+    }
+
+    const handleRemoveOneCategory = (products) => {
+        setCartItem(cartItem.filter((item) => item.id !== products.id))
+    }
+
+    const handleRemoveProduct = (product) => {
+        const ProductExits = cartItem.find((item) => item.id === product.id)
+        if (ProductExits.quantity === 1) {
+            setCartItem(cartItem.filter((item) => item.id !== product.id))
+        } else {
+            setCartItem(cartItem.map((item) =>
+                item.id === product.id ? {...ProductExits, quantity: ProductExits.quantity - 1 } :
+                item
+            ))
+        }
+    }
+
+    const handleClearCart = () => {
+        setCartItem([])
+    }
+
+    const handleLogin = (email, password) => {
+        if (email === "" || password === "") {
+            alert("Vui lòng nhập đầy đủ thông tin")
+        } else {
+
+            const userExits = listUser.find((item) => item.email === email && item.password === password)
+
+            if (userExits) {
+                setNowUser({
+                    email: email,
+                    password: password
+                })
+                loginNavigate('/')
+
+            } else {
+                alert("Tài khoản chưa tồn tại ^_^ \n Vui lòng đăng ký tài khoản mới")
+            }
+
+        }
+    }
+
+    const handleLogout = () => {
+        setNowUser({
+            email: '',
+            password: ''
+        })
+    }
+
+
     return ( <
             AuthProvider >
             <
@@ -35,23 +151,47 @@ function App() {
             <
             Route path = "/"
             element = { < Home listProducts = { listProducts }
+                cartItem = { cartItem }
+                handleAddProduct = { handleAddProduct }
+                textSearchProductRef = { textSearchProductRef }
+                handleSearchProduct = { handleSearchProduct }
+                handleTypeProduct = { handleTypeProduct }
+                tabProducts = { tabProducts }
+                typeProduct = { typeProduct }
+                currentProduct = { currentProduct }
+                listUser = { listUser }
+                nowUser = { nowUser }
+                handleLogout = { handleLogout }
                 />} / >
                 <
                 Route path = "/user/signup"
                 element = { < Signup / > }
                 /> <
                 Route path = "/user/login"
-                element = { < Login / > }
-                /> <
-                Route path = "user/CartProduct"
-                element = { < Cart listProducts = { listProducts }
+                element = { < Login listUser = { listUser }
+                    handleLogin = { handleLogin }
                     />} / >
                     <
-                    Route element = { < NotFound / > }
-                    /> <
-                    /Routes> <
-                    /AuthProvider>     
-                );
-            }
+                    Route path = "user/CartProduct"
+                    element = { < Cart listProducts = { listProducts }
+                        cartItem = { cartItem }
+                        handleAddProduct = { handleAddProduct }
+                        handleRemoveProduct = { handleRemoveProduct }
+                        handleRemoveOneCategory = { handleRemoveOneCategory }
+                        handleClearCart = { handleClearCart }
+                        nowUser = { nowUser }
+                        />} / >
+                        <
+                        Route path = "user/checkout"
+                        element = { < Checkout cartItem = { cartItem }
+                            handleClearCart = { handleClearCart }
+                            />} / >
+                            <
+                            Route element = { < NotFound / > }
+                            /> <
+                            /Routes> <
+                            /AuthProvider>     
+                        );
+                    }
 
-            export default App;
+                    export default App;

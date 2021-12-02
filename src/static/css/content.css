@@ -1,5 +1,9 @@
+.content {}
+
 .content__header {
-    margin: 24px 0;
+    margin: 0;
+    height: 480px;
+    padding-top: 160px;
 }
 
 .content__header-image-item {
@@ -49,6 +53,7 @@
     display: flex;
     align-items: center;
     font-size: 1.4rem;
+    position: relative;
 }
 
 .content__sidebar-item.last {
@@ -58,7 +63,8 @@
 
 .content__sidebar-item:hover {
     cursor: pointer;
-    background-color: rgb(142, 142, 250);
+    color: blue;
+    left: 4px;
 }
 
 .content__sidebar-item-text {
@@ -160,6 +166,11 @@
 
 .product__img {
     width: 100%;
+    transition: transform infinite;
+}
+
+.product__img:hover {
+    transform: rotateY(180deg);
 }
 
 .Icon__quality {
@@ -173,10 +184,13 @@
 }
 
 .content__product-item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 92%;
     margin: 20px 0 10px 0;
-    border-radius: 1px;
-    box-shadow: 0 0 10px rgb(216, 216, 217);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgb(177, 177, 181);
 }
 
 .content__product-item-container:hover {
@@ -190,7 +204,7 @@
 }
 
 .product__info {
-    padding: 10px;
+    padding: 10px 10px 16px 10px;
 }
 
 .product__info-describe {
@@ -220,16 +234,51 @@
 
 .btn.btn-add-to-cart {
     position: relative;
-    width: 46%;
-    background-color: rgb(142, 142, 250);
+    width: 40%;
+    background-color: rgb(72, 72, 252);
     font-size: 2rem;
 }
 
 .btn.btn-add-to-cart:hover {
     background-color: blue;
-    color: rgb(234, 255, 0);
+    color: rgb(34, 255, 0);
     top: -2px;
     right: -2px;
     box-shadow: -4px 4px 10px rgb(131, 222, 252);
     font-size: 2.4rem;
+}
+
+.paginationBttns {
+    height: 34px;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px auto;
+    padding: 0;
+    font-size: 2rem;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.paginationBttns a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 6px;
+    margin: 6px;
+    border-radius: 5px;
+    border: 1px solid rgb(138, 138, 241);
+    cursor: pointer;
+    color: rgb(138, 138, 241);
+}
+
+.paginationBttns a:hover {
+    color: white;
+    background-color: rgb(124, 124, 229);
+}
+
+.paginationActive a {
+    color: white;
+    background-color: rgb(124, 124, 229);
 }

@@ -9,6 +9,8 @@ import ImageIcon from "../../static/image/shop-icon.png"
 import { useAuth } from "../../auth/AuthContext";
 
 import Footer from "../Footer";
+import IconTelephone from "../IconTelephone";
+import { async } from "@firebase/util";
 
 // import Footer from "../Footer";
 
@@ -22,22 +24,51 @@ const Signup = () => {
         // const [loading, setLoading] = useState(false)
 
 
-    const handleSignup = async(e) => {
+    // const handleSignup = async (e) => {
+    //     e.preventDefault()
+
+    //     if (passwordRef.current.value !== passwordConfirmRef.current.value){
+    //         console.log('Passwords do not match')
+    //     }
+
+    //     try{
+    //         await signup(emailRef.current.value, passwordRef.current.value)
+    //         alert("sdfsdfdsf")
+
+    //     }catch {
+    //         console.log('fail')
+    //     }
+
+    //     navigate('/user/login')
+
+    // }
+    const postData = async(url, data) => {
+        await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+    }
+
+    const handleSignup = (e) => {
             e.preventDefault()
+            if (passwordConfirmRef.current.value === "" || emailRef.current.value === "" || passwordRef.current.value === "") {
+                alert("Hãy điền đầy đủ thông tin")
+            } else if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+                alert("Xác nhận mật khẩu không chính xác")
+                passwordConfirmRef.current.focus()
+            } else {
+                postData('http://localhost:3000/user', {
+                    id: emailRef.current.value + passwordConfirmRef.current.value,
+                    email: emailRef.current.value,
+                    password: passwordRef.current.value
+                })
 
-            if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-                console.log('Passwords do not match')
+                alert("Đăng ký thành công")
+                navigate("/user/login")
             }
-
-            try {
-                await signup(emailRef.current.value, passwordRef.current.value)
-
-            } catch {
-                console.log('fail')
-            }
-
-            navigate('/user/login')
-
         }
         // const [currentUser, setCurrentUser] = useState(null)
 
@@ -172,6 +203,13 @@ const Signup = () => {
         /div> <
         /div> <
         /div> <
+        /div>
+
+        <
+        div >
+        <
+        IconTelephone / >
+        <
         /div>
 
         <

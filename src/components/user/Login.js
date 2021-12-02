@@ -6,28 +6,16 @@ import '../../static/css/signup.css'
 
 import ImageIcon from "../../static/image/shop-icon.png"
 // import firebaseConfig from "../../firebase/firebase";
-import { useAuth } from "../../auth/AuthContext";
 import Footer from '../Footer';
+import IconTelephone from '../IconTelephone';
 
-const Login = () => {
+const Login = ({ listUser, handleLogin }) => {
     const emailRef = useRef()
     const passwordRef = useRef()
     let navigate = useNavigate()
 
-    const { login } = useAuth
 
-    const handleLogin = async(e) => {
-        e.preventDefault()
 
-        try {
-            await login(emailRef.current.value, passwordRef.current.value)
-
-        } catch {
-            console.log("Failed to log in ")
-        }
-
-        navigate('/')
-    }
 
     return ( <
         div className = "signup__page" >
@@ -115,7 +103,8 @@ const Login = () => {
         <
         div className = "auth__form-group" >
         <
-        button onClick = { handleLogin }
+        button onClick = {
+            () => handleLogin(emailRef.current.value, passwordRef.current.value) }
         className = "btn btn-signup" > Đăng nhập < /button> <
         /div>
 
@@ -130,6 +119,13 @@ const Login = () => {
         /div> <
         /div> <
         /div> <
+        /div>
+
+        <
+        div >
+        <
+        IconTelephone / >
+        <
         /div>
 
         <

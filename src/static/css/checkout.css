@@ -1,0 +1,243 @@
+.checkout__header {
+    background-color: #f3faff;
+    display: flex;
+}
+
+.checkout__header-content {
+    display: flex;
+    align-items: center;
+}
+
+.checkout__header-logo {
+    display: flex;
+    align-items: center;
+    margin: 0 30px;
+}
+
+.checkout__header-logo-icon {
+    max-width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.checkout__header-logo-text {
+    font-size: 3.5rem;
+}
+
+.checkout__header-title {
+    font-size: 3rem;
+}
+
+.checkout__content.grid.wide.row {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 30px;
+}
+
+.checkout__content-left {
+    background-color: #f3faff;
+    height: 650px;
+    margin: 12px 12px;
+    padding: 20px 16px;
+}
+
+.checkout__content-left h3 {
+    font-size: 2rem;
+    margin: 10px 0 0 0;
+    color: #444;
+}
+
+.checkout__info-buyer-content {
+    margin-top: 16px;
+    height: 420px;
+}
+
+.form__input-info-buyer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    height: 60px;
+    justify-content: space-between;
+}
+
+.form__input-info-buyer label {
+    font-size: 1.4rem;
+    color: var(--text-color);
+}
+
+.checkout__info-buyer-input {
+    width: 94%;
+    height: 36px;
+    outline: none;
+    border: 1px solid #999;
+    border-radius: 2px;
+}
+
+.checkout__info-buyer-location p {
+    font-size: 1.4rem;
+    color: var(--text-color);
+}
+
+.checkout__info-buyer-location-btn {
+    width: 110px;
+    height: 56px;
+    border-radius: 10px;
+    border: none;
+    margin-right: 12px;
+    margin-bottom: 30px;
+}
+
+.checkout__info-buyer-location-btn {
+    cursor: pointer;
+}
+
+.checkout__info-save-buyer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.check__info-save-buyer-btn {
+    width: 160px;
+    height: 38px;
+    background-color: rgb(68, 68, 245);
+    border: none;
+    border-radius: 2px;
+    font-size: 1.6rem;
+    color: white;
+    margin-right: 20px;
+}
+
+.check__info-save-buyer-btn:hover {
+    cursor: pointer;
+    background-color: blue;
+}
+
+.checkout__content-right {
+    background-color: #f3faff;
+    margin: 12px 0;
+    padding: 20px 16px;
+}
+
+.checkout__content-payment {}
+
+.checkout__content-payment-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.6rem;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.checkout__content-payment-title h3 {
+    margin: 0;
+}
+
+.checkout__content-payment-method {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: white;
+    margin-bottom: 12px;
+    padding: 4px 10px;
+    border: 1px solid blue;
+    border-radius: 4px;
+}
+
+.checkout__content-payment-method span {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+}
+
+.checkout__content-payment-method-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkout__content-payment-method-describe {
+    display: flex;
+    align-items: center;
+}
+
+.checkout__content-payment-method-describe p {
+    font-size: 1.4rem;
+}
+
+.checkout__content-payment-method-img {
+    width: 28px;
+    height: 14px;
+    margin-right: 8px;
+}
+
+.checkout__content-payment-down {
+    margin-top: 24px;
+    font-size: 1.4rem;
+    color: #444;
+}
+
+.checkout__content-payment-down-price {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkout__content-payment-down-input {
+    width: 74%;
+    height: 36px;
+    border: 1px solid #999;
+    border-radius: 2px;
+    outline: none;
+}
+
+.checkout__content-payment-down-btn {
+    border: none;
+    border-radius: 2px;
+    background-color: #4444f5;
+    color: white;
+}
+
+.checkout__content-payment-down-btn:hover {
+    cursor: pointer;
+    background-color: blue;
+}
+
+.checkout__content-payment-info-order h3 {
+    font-size: 1.6rem;
+    color: #444;
+    margin-top: 24px;
+}
+
+.total-info-order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-info-order p {
+    font-size: 1.4rem;
+}
+
+.info-total-price {
+    border-top: 1px solid rgb(176, 176, 178);
+}
+
+.total-info-order.info-total-price p {
+    color: red;
+}
+
+.btn-order {
+    width: 100%;
+    height: 40px;
+    border: none;
+    background-color: rgb(252, 114, 59);
+    color: white;
+    font-size: 1.8rem;
+    border-radius: 2px;
+    margin-top: 16px;
+}
+
+.btn-order:hover {
+    cursor: pointer;
+    background-color: #f65a26;
+}
