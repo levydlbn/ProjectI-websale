@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import AuthProvider from './auth/AuthContext';
+import Admin from './components/admin/Admin';
+import LoginAdmin from './components/admin/LoginAdmin';
+import DetailProduct from './components/DetailProduct';
 import Cart from './components/user/Cart';
 import Checkout from './components/user/Checkout';
 // import './App.css'
@@ -111,6 +114,9 @@ function App() {
         }
     }
 
+    const getProductById = (id) => {
+        listProducts.find((product) => product.id === id)
+    }
     const handleClearCart = () => {
         setCartItem([])
     }
@@ -172,7 +178,7 @@ function App() {
                     handleLogin = { handleLogin }
                     />} / >
                     <
-                    Route path = "user/CartProduct"
+                    Route path = "/user/CartProduct"
                     element = { < Cart listProducts = { listProducts }
                         cartItem = { cartItem }
                         handleAddProduct = { handleAddProduct }
@@ -182,16 +188,33 @@ function App() {
                         nowUser = { nowUser }
                         />} / >
                         <
-                        Route path = "user/checkout"
-                        element = { < Checkout cartItem = { cartItem }
-                            handleClearCart = { handleClearCart }
+                        Route path = "/product/:id"
+                        element = { < DetailProduct cartItem = { cartItem }
+                            nowUser = { nowUser }
+                            listProducts = { listProducts }
+                            getProductById = { getProductById }
+                            handleAddProduct = { handleAddProduct }
+                            handleRemoveProduct = { handleAddProduct }
                             />} / >
                             <
-                            Route element = { < NotFound / > }
-                            /> <
-                            /Routes> <
-                            /AuthProvider>     
-                        );
-                    }
+                            Route path = "/user/checkout"
+                            element = { < Checkout cartItem = { cartItem }
+                                handleClearCart = { handleClearCart }
+                                />} / >
+                                <
+                                Route path = "/admin"
+                                element = { < LoginAdmin / > }
+                                /> <
+                                Route path = "/admin/manager/*"
+                                element = { < Admin listProducts = { listProducts }
+                                    />} / >
+                                    <
+                                    Route path = "*"
+                                    element = { < NotFound / > }
+                                    /> <
+                                    /Routes> <
+                                    /AuthProvider>     
+                                );
+                            }
 
-                    export default App;
+                            export default App;

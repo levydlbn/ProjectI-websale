@@ -13,6 +13,7 @@ import ImageHeader6 from "../static/image/slideshow_21140x438.jpg"
 // import Iconquality from "../static/image/101-1010604_24-hour-delivery-guarantee-hd-png-download.png"
 
 import { FaChevronDown, FaList, FaCartPlus, FaAngleLeft, FaAngleRight } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 
 
@@ -67,9 +68,16 @@ const Content = ({
         <
         div className = "content__product-item-container" >
         <
+        Link to = { `/product/${product.id}` }
+        style = {
+            { margin: 0 } } >
+        <
         img src = { product.thum }
         alt = { product.name }
         className = "product__img" / >
+        <
+        /Link>
+
         <
         div className = "product__info" >
         <

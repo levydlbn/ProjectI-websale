@@ -1,0 +1,142 @@
+.home {
+    margin-top: 12px;
+    padding-left: 10px;
+}
+
+.home__header {}
+
+.home__header-title {
+    font-size: 2rem;
+    margin-bottom: 16px;
+}
+
+.home__header-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home__header-info-item {
+    width: 220px;
+    min-width: 140px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 6px 4px rgb(231, 229, 229);
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.home__header-info-item-img {
+    width: 40%;
+    height: 100%;
+    background-color: rgb(253, 91, 37);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home__header-info-item-img.other {
+    background-color: rgb(110, 110, 253);
+}
+
+.home__header-info-item-text p {
+    font-size: 1.4rem;
+    margin: 6px;
+}
+
+.home__header-info-item-icon {
+    width: 40px;
+    height: 40px;
+    color: white;
+}
+
+
+/* HOME body */
+
+.home__body {
+    margin-top: 16px;
+}
+
+.home__body-info-shop-content {
+    padding: 3px 12px 20px 12px;
+    box-shadow: 0 0 6px 4px rgb(231, 229, 229);
+    font-size: 1.2rem;
+    border-radius: 2px;
+    color: #444;
+    border-top: 3px solid rgb(131, 119, 255);
+}
+
+.home__body-info-new-product.col {
+    padding: 0 4px;
+}
+
+.home__body-info-sportshop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0 12px 0;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+
+.home__body-info-sportshop span {
+    color: red;
+}
+
+.home__body-info-setting {
+    height: 30px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: flex-end;
+}
+
+.home__body-info-setting-icon {
+    font-size: 1.6rem;
+    margin-right: 10px;
+    color: #444;
+}
+
+.home__body-info-sportshop p {
+    margin: 5px;
+    color: #666;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.home__body-info-sportshop h4 {
+    margin: 12px 0;
+}
+
+.home__body-info-sportshop-icon {
+    width: 60px;
+    height: 60px;
+}
+
+.home__body-info-new-product-item {
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #999;
+}
+
+.home__body-info-new-product-item p {
+    color: rgb(238, 75, 75);
+}
+
+.home__body-info-product-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 4px;
+}
+
+.home__body-info-product-describe {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}

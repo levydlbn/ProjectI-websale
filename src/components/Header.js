@@ -12,6 +12,7 @@ import '../static/css/header.css'
 
 const Header = ({ cartItem, textSearchProductRef, handleSearchProduct, nowUser, handleLogout }) => {
 
+        const totalProductInCart = cartItem.reduce((numberProduct, item) => numberProduct + item.quantity, 0)
 
         return ( <
             div className = "header" >
@@ -138,7 +139,7 @@ const Header = ({ cartItem, textSearchProductRef, handleSearchProduct, nowUser, 
                 <
                 FaShoppingCart / >
                 <
-                div className = "header-cart-notice" > { cartItem.length } < /div> <
+                div className = "header-cart-notice" > { totalProductInCart } < /div> <
                 /div> <
                 /Link> <
                 div className = "header__search-cart-list" >

@@ -1,0 +1,60 @@
+.topbar {
+    width: 100%;
+    height: 50px;
+    background-image: linear-gradient(0, #414041, #1d1d1d);
+}
+
+.admin_name {
+    margin-left: 10px;
+}
+
+.grid.wide {
+    height: 100%;
+}
+
+.topbar__content {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    font-size: 1.8rem;
+}
+
+.topbar__content-right {
+    display: flex;
+    align-items: center;
+}
+
+.topbar__content-left {
+    display: flex;
+    align-items: center;
+}
+
+.topbar__iconContainer {
+    margin-left: 18px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.topbar__iconShop {
+    width: 26px;
+    height: 26px;
+    margin-right: 6px;
+}
+
+.topbar__iconBadge {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: red;
+    top: -8px;
+    left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
