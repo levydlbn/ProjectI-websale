@@ -9,6 +9,9 @@ import { FaHome, FaShoppingBag, FaAddressBook, FaUserPlus, FaProductHunt, FaShop
 
 
 const HomeAdmin = ({ listProducts }) => {
+
+    const listProductNew = listProducts.slice(1, 10)
+
     return ( <
         div className = 'home' >
         <
@@ -44,7 +47,7 @@ const HomeAdmin = ({ listProducts }) => {
         div className = 'home__header-info-item-text' >
         <
         p > SẢN PHẨM < /p> <
-        p > 234 < /p> <
+        p > { listProducts.length } < /p> <
         /div> <
         /div> <
         div className = 'home__header-info-item' >
@@ -134,10 +137,10 @@ const HomeAdmin = ({ listProducts }) => {
         <
         div className = 'home__body-info-new-product col c-4' >
         <
-        div className = 'home__body-info-shop-content' >
+        div className = 'home__body-info-shop-content product' >
         <
         h3 > SẢN PHẨM MỚI < /h3> {
-            listProducts.map((item) => ( <
+            listProductNew.map((item) => ( <
                 div className = 'home__body-info-new-product-item' >
                 <
                 img src = { item.thum }

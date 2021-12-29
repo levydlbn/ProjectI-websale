@@ -1,0 +1,54 @@
+.sale {
+    margin-top: 12px;
+    padding-left: 20px;
+}
+
+.sale__chart-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sale__chart-product h3 {
+    font-size: 2rem;
+    color: #444;
+}
+
+.sale__chart-turnover h3 {
+    font-size: 2rem;
+    color: #444;
+}
+
+.sale__chart-turnover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sale__value {
+    margin-top: 12px;
+}
+
+.sale__value-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.sale__value-item p {
+    font-size: 1.2rem;
+    color: #444;
+}
+
+.sale__box-value-item {
+    width: 90%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.6rem;
+    background-color: #e99535;
+    border-radius: 20px;
+}

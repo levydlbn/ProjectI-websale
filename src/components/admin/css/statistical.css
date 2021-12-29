@@ -1,0 +1,23 @@
+.statistical {
+    margin-top: 12px;
+}
+
+.statistical__user-access {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.statistical__user-access h3 {
+    font-size: 2rem;
+}
+
+.statistical__number-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.statistical__number-search h3 {
+    font-size: 2rem;
+}

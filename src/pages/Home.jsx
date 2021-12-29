@@ -20,21 +20,22 @@ const Home = ({
     tabProducts,
     typeProduct,
     currentProduct,
-    listUser
+    listUser,
+    isLoading,
+    isLoadingTypeProduct
 }) => {
 
-    return ( <
-        AuthProvider >
-        <
-        Header listProducts = { listProducts }
+    return ( 
+        <AuthProvider>
+        <Header listProducts = { listProducts }
         cartItem = { cartItem }
         handleLogout = { handleLogout }
         textSearchProductRef = { textSearchProductRef }
         nowUser = { nowUser }
         handleSearchProduct = { handleSearchProduct }
         listUser = { listUser }
-        /> <
-        Content listProducts = { listProducts }
+        /> 
+        <Content listProducts = { listProducts }
         cartItem = { cartItem }
         handleAddProduct = { handleAddProduct }
         handleTypeProduct = { handleTypeProduct }
@@ -42,13 +43,12 @@ const Home = ({
         typeProduct = { typeProduct }
         currentProduct = { currentProduct }
         textSearchProductRef = { textSearchProductRef }
-        /> <
-        IconTelephone / >
-        <
-        Footer / >
-        <
-        /AuthProvider>
+        isLoading = { isLoading }
+        isLoadingTypeProduct = { isLoadingTypeProduct }
+        /> 
+        <IconTelephone />
+        <Footer />
+        </AuthProvider>
     )
 }
-
 export default Home

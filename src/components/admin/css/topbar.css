@@ -39,6 +39,11 @@
     align-items: center;
 }
 
+.topbar__iconSetting:hover {
+    cursor: pointer;
+    transform: rotateZ(20deg);
+}
+
 .topbar__iconShop {
     width: 26px;
     height: 26px;

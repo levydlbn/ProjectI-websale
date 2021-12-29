@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import ReactLoading from 'react-loading'
 import AuthProvider from './auth/AuthContext';
 import Admin from './components/admin/Admin';
-import LoginAdmin from './components/admin/LoginAdmin';
+import LoginAdmin from './components/admin/LoginAdmin.jsx';
 import DetailProduct from './components/DetailProduct';
 import Cart from './components/user/Cart';
 import Checkout from './components/user/Checkout';
@@ -38,17 +39,23 @@ function App() {
     const [cartItem, setCartItem] = useState([])
     const textSearchProductRef = useRef()
 
+    const [isLoading, setIsLoading] = useState(false)
+    const [isLoadingTypeProduct, setIsLoadingTypeProduct] = useState(true)
+
     const [currentProduct, setCurrentProduct] = useState(listProducts)
     const [typeProduct, setTypeProduct] = useState("full")
 
     let loginNavigate = useNavigate()
 
     useEffect(() => {
-        fetch(`http://localhost:3000/product`)
-            .then(res => res.json())
-            .then(products => {
-                setListProducts(products)
-            })
+        setTimeout(() => {
+            fetch(`http://localhost:3000/product`)
+                .then(res => res.json())
+                .then(products => {
+                    setListProducts(products)
+                    setIsLoading(true)
+                })
+        }, 2000)
     }, [])
 
     useEffect(() => {
@@ -150,13 +157,11 @@ function App() {
     }
 
 
-    return ( <
-            AuthProvider >
-            <
-            Routes >
-            <
-            Route path = "/"
-            element = { < Home listProducts = { listProducts }
+    return ( 
+        <AuthProvider>
+            <Routes>
+            <Route path = "/"
+                element = { <Home listProducts = { listProducts }
                 cartItem = { cartItem }
                 handleAddProduct = { handleAddProduct }
                 textSearchProductRef = { textSearchProductRef }
@@ -168,52 +173,42 @@ function App() {
                 listUser = { listUser }
                 nowUser = { nowUser }
                 handleLogout = { handleLogout }
-                />} / >
-                <
-                Route path = "/user/signup"
-                element = { < Signup / > }
-                /> <
-                Route path = "/user/login"
-                element = { < Login listUser = { listUser }
-                    handleLogin = { handleLogin }
-                    />} / >
-                    <
-                    Route path = "/user/CartProduct"
-                    element = { < Cart listProducts = { listProducts }
+                isLoading = { isLoading }
+                isLoadingTypeProduct = { isLoadingTypeProduct } />} />
+            <Route path = "/user/signup"
+                element = { <Signup /> } /> 
+            <Route path = "/user/login"
+                element = { <Login listUser = { listUser }
+                    handleLogin = { handleLogin } />} />
+            <Route path = "/user/CartProduct"
+                    element = { <Cart 
+                        listProducts = { listProducts }
                         cartItem = { cartItem }
                         handleAddProduct = { handleAddProduct }
                         handleRemoveProduct = { handleRemoveProduct }
                         handleRemoveOneCategory = { handleRemoveOneCategory }
                         handleClearCart = { handleClearCart }
-                        nowUser = { nowUser }
-                        />} / >
-                        <
-                        Route path = "/product/:id"
-                        element = { < DetailProduct cartItem = { cartItem }
+                        nowUser = { nowUser } />} />
+            <Route path = "/product/:id"
+                           element = { <DetailProduct cartItem = { cartItem }
                             nowUser = { nowUser }
                             listProducts = { listProducts }
                             getProductById = { getProductById }
                             handleAddProduct = { handleAddProduct }
                             handleRemoveProduct = { handleAddProduct }
-                            />} / >
-                            <
-                            Route path = "/user/checkout"
-                            element = { < Checkout cartItem = { cartItem }
+                            />} />
+            <Route path = "/user/checkout"
+                            element = { <Checkout cartItem = { cartItem }
                                 handleClearCart = { handleClearCart }
-                                />} / >
-                                <
-                                Route path = "/admin"
-                                element = { < LoginAdmin / > }
-                                /> <
-                                Route path = "/admin/manager/*"
-                                element = { < Admin listProducts = { listProducts }
-                                    />} / >
-                                    <
-                                    Route path = "*"
-                                    element = { < NotFound / > }
-                                    /> <
-                                    /Routes> <
-                                    /AuthProvider>     
+                                />} />
+            <Route path = "/admin" element = { <LoginAdmin /> } /> 
+            <Route path = "/admin/manager/*"
+                                element = { <Admin listProducts = { listProducts }
+                                    listUser = { listUser }
+                                    />} />
+            <Route path = "*" element = { <NotFound /> } /> 
+            </Routes> 
+            </AuthProvider>     
                                 );
                             }
 

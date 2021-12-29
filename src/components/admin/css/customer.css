@@ -1,0 +1,144 @@
+.customer {
+    margin-top: 12px;
+}
+
+.customer__new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.customer__new-title h4 {
+    font-size: 1.8rem;
+    color: #444;
+    padding: 0;
+    margin: 0;
+}
+
+.customer__new-list {
+    background-color: aliceblue;
+    padding: 12px;
+    border: 4px;
+}
+
+.customer__new-list-item {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 6px;
+    padding: 0 10px 0 10px;
+    color: #444;
+}
+
+.customer__new-list-item p {
+    margin: 10px;
+}
+
+.customer__new-list-item-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.customer__new-list-item-name {
+    font-size: 1.4rem;
+}
+
+.customer__age-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.customer__age-chart h3 {
+    font-size: 1.8rem;
+    color: #444;
+    margin: 0;
+}
+
+.customer__age-chart-note {
+    display: flex;
+    flex-direction: column;
+}
+
+.customer__age-chart-note-item {
+    display: flex;
+    align-items: center;
+    margin: 4px;
+}
+
+.customer__age-chart-note-item-box {
+    width: 72px;
+    margin: 4px 8px;
+    padding: 4px;
+    font-size: 1.2rem;
+    color: white;
+    border-radius: 2px;
+}
+
+.customer__age-chart-note-item-box.one {
+    background-color: #0088fe;
+}
+
+.customer__age-chart-note-item-box.two {
+    background-color: #00c49f;
+}
+
+.customer__age-chart-note-item-box.three {
+    background-color: #ffbb28;
+}
+
+.customer__age-chart-note-item-box.fore {
+    background-color: #ff8042;
+}
+
+.customer__right-below {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.customer__right-below h3 {
+    font-size: 1.8rem;
+    color: #444;
+}
+
+.customer__left {
+    padding: 0 12px;
+}
+
+.customer__left h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #444;
+}
+
+.customer__list-item {
+    background-color: azure;
+    margin: 10px 0;
+    padding: 4px 8px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.customer__list-item span {
+    font-size: 1.3rem;
+    color: #444;
+    margin-left: 4px;
+}
+
+.customer__list-item-info {
+    display: flex;
+    align-items: center;
+}
+
+.customer__list-item-active-state {
+    display: flex;
+    align-items: center;
+}
+
+.customer__list-item-active-state-icon {
+    width: 20px;
+}

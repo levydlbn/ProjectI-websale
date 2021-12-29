@@ -67,6 +67,10 @@
     border-top: 3px solid rgb(131, 119, 255);
 }
 
+.home__body-info-shop-content.product {
+    max-height: 540px;
+}
+
 .home__body-info-new-product.col {
     padding: 0 4px;
 }

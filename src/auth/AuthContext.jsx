@@ -36,9 +36,10 @@ const AuthProvider = ({ children }) => {
         login
     }
 
-    return ( <
-        AuthContext.Provider value = { value } > { children } <
-        /AuthContext.Provider>
+    return ( 
+    <AuthContext.Provider value = { value }> 
+        { children } 
+    </AuthContext.Provider>
     )
 }
 

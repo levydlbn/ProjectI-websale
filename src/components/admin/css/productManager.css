@@ -1,0 +1,118 @@
+.productManager {
+    margin-top: 12px;
+    padding: 0 12px;
+}
+
+.productManager__header {
+    display: flex;
+    justify-content: space-between;
+    background-color: aliceblue;
+    padding: 0 10px;
+    border-radius: 4px;
+    border: 1px solid rgb(178, 178, 178);
+    align-items: center;
+}
+
+.productManager__header p {
+    font-size: 1.3rem;
+    color: #444;
+}
+
+.productManager__item-describe {
+    display: flex;
+    align-items: center;
+}
+
+.productManager-item {
+    height: 50px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.productManager-item:hover {
+    background-color: rgb(246, 246, 246);
+}
+
+.productManager-item-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.productManager-item-text {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.productManager__item-status {
+    color: blue;
+}
+
+.productManager__item-action-edit {
+    width: 50px;
+    height: 26px;
+    border: none;
+    border-radius: 2px;
+    background-color: rgb(135, 135, 243);
+    color: white;
+}
+
+.productManager__item-action-edit:hover {
+    cursor: pointer;
+    background-color: blue;
+}
+
+.productManager__item-action-delete {
+    width: 50px;
+    height: 26px;
+    border: none;
+    border-radius: 2px;
+    background-color: rgb(248, 101, 101);
+    color: white;
+}
+
+.productManager__item-action-delete:hover {
+    cursor: pointer;
+    background-color: red;
+}
+
+.paginationBttn {
+    height: 34px;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 0;
+    font-size: 1.6rem;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.paginationBttn a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 5px;
+    margin: 6px;
+    border-radius: 5px;
+    border: 1px solid rgb(149, 149, 149);
+    cursor: pointer;
+    color: #444;
+}
+
+.paginationBttn a:hover {
+    color: white;
+    background-color: rgb(149, 149, 149);
+}
+
+.paginationActives a {
+    color: white;
+    background-color: rgb(149, 149, 149);
+}
