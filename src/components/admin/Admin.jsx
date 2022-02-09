@@ -12,6 +12,7 @@ import Statistical from './Statistical'
 import Customer from './Customer'
 import Order from './Order'
 import Collaborators from './Collaborators'
+import Footer from './Footer'
 
 const Admin = ({ listProducts, listUser }) => {
         return ( 
@@ -44,6 +45,9 @@ const Admin = ({ listProducts, listUser }) => {
                 </div> 
 
                 </div> 
+                <div>
+                    <Footer />
+                </div>
                             
                 </div>
 

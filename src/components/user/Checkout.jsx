@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import Footer from '../Footer'
+import Loading3 from '../loading/Loading3'
 
 import ImageIcon from '../../static/image/shop-icon.png'
 import ImagePayment1 from '../../static/image/th.jfif'
@@ -11,7 +12,7 @@ import '../../static/css/checkout.css'
 import '../../static/css/base.css'
 import IconTelephone from '../IconTelephone'
 
-const Checkout = ({ cartItem, handleClearCart }) => {
+const Checkout = ({ cartItem, handleClearCart, handleLoading }) => {
 
     const totalPrice = cartItem.reduce((price, item) => price + item.quantity * item.price, 0)
 
@@ -21,6 +22,14 @@ const Checkout = ({ cartItem, handleClearCart }) => {
     const cityRef = useRef()
     const districtRef = useRef()
     const wardRef = useRef()
+
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 2000)
+    })
 
     const navigate = useNavigate()
 
@@ -32,7 +41,7 @@ const Checkout = ({ cartItem, handleClearCart }) => {
         { type: 'card', img: ImagePayment2, title: 'Thẻ tín dụng/Thẻ ghi nợ', describe: 'Chọn để thêm thẻ' }
     ]
 
-    const [typePayment, setTypePayment] = useState('')
+    const [typePayment, setTypePayment] = useState('direct')
     const [typeLocation, setTypeLocation] = useState('office')
     const [btnSubmit, setbtnSubmit] = useState(false)
 
@@ -79,18 +88,24 @@ const Checkout = ({ cartItem, handleClearCart }) => {
             setListInfoBuyers([...listInfoBuyers, { infoBuyers, typePayment, totalPrice }])
             alert("Đặt hàng thành công")
             handleClearCart()
-            navigate('/')
+            setTimeout(() => {
+                navigate('/')
+            }, 2000);
+            
         }
     }
 
 
 
     return ( 
+        <div>
+            {isLoading === true ? <Loading3 /> :
         <div className = "checkout">
         <div className = "checkout__header">
         <div className = "checkout__header-content grid wide col c-12">
         <Link to = "/"
-        className = "checkout__header-logo">
+        className = "checkout__header-logo"
+        onClick={() => handleLoading()}>
         <img src = { ImageIcon }
         alt = "icon shop"
         className = "checkout__header-logo-icon" />
@@ -101,7 +116,7 @@ const Checkout = ({ cartItem, handleClearCart }) => {
         <div className = "checkout__header-title">
         <p className = "checkout__header-title"> Thanh toán </p> 
         </div> 
-        </div> 
+        </div>  
         </div> 
         <div className = "checkout__content grid wide row col c-12">
         <div className = "checkout__content-left col c-8">
@@ -236,7 +251,7 @@ const Checkout = ({ cartItem, handleClearCart }) => {
         <p> { Math.floor(totalPrice + totalPrice * 0.05)} đ </p> 
         </div> {
             btnSubmit === true && ( 
-                <button onClick = { handleOrder }
+                <button onClick = {() => handleOrder() }
                 className = "btn-order" >
                 ĐẶT HÀNG </button>
             )
@@ -254,6 +269,9 @@ const Checkout = ({ cartItem, handleClearCart }) => {
         <Footer /> 
         </div> 
         </div>
+            }
+        </div>
+
     )
 }
 

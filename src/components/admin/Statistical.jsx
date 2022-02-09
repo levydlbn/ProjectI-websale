@@ -1,8 +1,7 @@
 import React from 'react'
 
-import ImgOcCho from '../../static/image/9999521de6e71db944f6.jpg'
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts'
 
 import './css/statistical.css'
 

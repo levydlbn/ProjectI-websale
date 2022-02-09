@@ -29,6 +29,13 @@ const tabProducts = [{ tab: 'full', title: 'TẤT CẢ SẢN PHẨM' },
     { tab: 'balls', title: 'Quả bóng đá' }
 ]
 
+const listSort = [{type: 'involve', title: 'Liên quan'},
+                  {type: 'latest', title: 'Mới nhất'},
+                  {type: 'selling', title: 'Bán chạy'}]
+
+const listSortPrice = [{type: 'increase', title: 'Giá: Thấp đến Cao'},
+                       {type: 'decrease', title: 'Giá: Cao đến Thấp'}]
+
 function App() {
 
 
@@ -39,11 +46,29 @@ function App() {
     const [cartItem, setCartItem] = useState([])
     const textSearchProductRef = useRef()
 
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoadingHome, setIsLoadingHome] = useState(true)
     const [isLoadingTypeProduct, setIsLoadingTypeProduct] = useState(true)
+    const [isLoadingProduct, setIsLoadingProduct] = useState(true)
 
     const [currentProduct, setCurrentProduct] = useState(listProducts)
     const [typeProduct, setTypeProduct] = useState("full")
+    const [typeSortProduct, setTypeSortProduct] = useState("involve")
+    const [typeSortPrice, setTypeSortPrice] = useState("Giá")
+    
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoadingProduct(false)
+        }, 1600)
+    }, [isLoadingProduct])
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoadingHome(false)
+        }, 2000);
+    }, [isLoadingHome])
+
+    
 
     let loginNavigate = useNavigate()
 
@@ -53,7 +78,6 @@ function App() {
                 .then(res => res.json())
                 .then(products => {
                     setListProducts(products)
-                    setIsLoading(true)
                 })
         }, 2000)
     }, [])
@@ -84,15 +108,52 @@ function App() {
     }, [typeProduct])
 
     const handleTypeProduct = (tabProduct) => {
+        setIsLoadingProduct(true)
         setTypeProduct(tabProduct)
+        setTypeSortProduct("involve")
+    }
+
+    const handleTypeSortProduct = (itemSort) => {
+        setIsLoadingProduct(true)
+        setTypeSortProduct(itemSort)
+        setTypeSortPrice("Giá")
+        if (itemSort === "selling"){
+            const sellingProduct = currentProduct.sort((a, b) => a.sellNumber - b.sellNumber)
+            setCurrentProduct(sellingProduct)
+        }else if ( itemSort === "involve") {
+            const involveProduct = currentProduct.reverse()
+            setCurrentProduct(involveProduct)
+        }else {
+            const latestProduct = currentProduct.reverse()
+            setCurrentProduct(latestProduct)
+        }
+    }
+    
+
+    const handleSortPriceProduct = (typePrice) => {
+        setIsLoadingProduct(true)
+        if (typePrice === 'increase') {
+            setTypeSortPrice("Giá: Thấp đến Cao")
+            const increaseProduct = currentProduct.sort((a, b) => a.price - b.price)
+            setCurrentProduct(increaseProduct)
+        } else {
+            setTypeSortPrice("Giá: Cao đến Thấp")
+            const descreaseProduct = currentProduct.sort((a, b) => b.price - a.price)
+            setCurrentProduct(descreaseProduct)
+        }
     }
 
 
 
     const handleSearchProduct = (e) => {
-        e.preventDefault()
-        const infoProductSearch = textSearchProductRef.current.value
-        setCurrentProduct(listProducts.filter(product => product.describe.toLowerCase().includes(infoProductSearch.toLowerCase())))
+        if(textSearchProductRef.current.value !== ""){
+            setIsLoadingProduct(true)
+            setTypeSortProduct("involve")
+            setTypeSortPrice("Giá")
+            e.preventDefault()
+            const infoProductSearch = textSearchProductRef.current.value
+            setCurrentProduct(listProducts.filter(product => product.describe.toLowerCase().includes(infoProductSearch.toLowerCase())))
+        }
     }
 
     const handleAddProduct = (product) => {
@@ -119,6 +180,10 @@ function App() {
                 item
             ))
         }
+    }
+
+    const handleLoading = () => {
+        setIsLoadingHome(true)
     }
 
     const getProductById = (id) => {
@@ -169,17 +234,30 @@ function App() {
                 handleTypeProduct = { handleTypeProduct }
                 tabProducts = { tabProducts }
                 typeProduct = { typeProduct }
+                listSort = { listSort }
+                typeSortProduct = { typeSortProduct }
+                handleTypeSortProduct = { handleTypeSortProduct }
+                typeSortPrice = { typeSortPrice }
+                listSortPrice = {listSortPrice}
+                handleSortPriceProduct = { handleSortPriceProduct }
                 currentProduct = { currentProduct }
                 listUser = { listUser }
                 nowUser = { nowUser }
                 handleLogout = { handleLogout }
-                isLoading = { isLoading }
-                isLoadingTypeProduct = { isLoadingTypeProduct } />} />
+                handleLoading = { handleLoading }
+                isLoadingHome = { isLoadingHome }
+                isLoadingTypeProduct = { isLoadingTypeProduct }
+                isLoadingProduct = { isLoadingProduct }
+                 />} />
             <Route path = "/user/signup"
-                element = { <Signup /> } /> 
+                element = { <Signup /> } 
+                    handleLoading = { handleLoading }
+                /> 
             <Route path = "/user/login"
                 element = { <Login listUser = { listUser }
-                    handleLogin = { handleLogin } />} />
+                    handleLogin = { handleLogin } />} 
+                    handleLoading = { handleLoading }
+                    />
             <Route path = "/user/CartProduct"
                     element = { <Cart 
                         listProducts = { listProducts }
@@ -200,6 +278,7 @@ function App() {
             <Route path = "/user/checkout"
                             element = { <Checkout cartItem = { cartItem }
                                 handleClearCart = { handleClearCart }
+                                handleLoading = { handleLoading }
                                 />} />
             <Route path = "/admin" element = { <LoginAdmin /> } /> 
             <Route path = "/admin/manager/*"

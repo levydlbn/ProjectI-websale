@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate'
 import ReactLoading from 'react-loading'
 
+import Loading from './Loading'
+import Loading1 from './loading/Loading1'
+
 import '../static/css/base.css'
 import '../static/css/content.css'
 
@@ -22,12 +25,19 @@ const Content = ({
     listProducts,
     handleAddProduct,
     handleTypeProduct,
+    handleTypeSortProduct,
     tabProducts,
     typeProduct,
+    listSort,
+    typeSortProduct,
+    typeSortPrice,
+    listSortPrice,
+    handleSortPriceProduct,
     currentProduct,
     textSearchProductRef,
     isLoading,
-    isLoadingTypeProduct
+    isLoadingTypeProduct,
+    isLoadingProduct
 }) => {
 
     const [pageNumber, setPageNumber] = useState(0)
@@ -102,15 +112,7 @@ const Content = ({
 
     return (
 
-        <div className = "content" > {
-            (!isLoading) ?
-            <div className = 'content__loading' >
-            <ReactLoading type = { 'bubbles' }
-            color = { 'blue' }
-            height = { 100 }
-            width = { 100 }
-            /> 
-            </div> :
+        <div className = "content" > 
                 <div className = "grid wide" >
                 <div className = "content__header col c-12" >
                 <div className = "content__header-image" >
@@ -153,23 +155,45 @@ const Content = ({
             <div className = "content__product-control" >
             <div className = "content__product-control-sort" >
             <p className = "content__product-control-title" > Sắp xếp theo </p> 
-            <button className = "btn btn-sort primary" > Liên quan </button> 
-            <button className = "btn btn-sort" > Mới nhất </button> 
-            <button className = "btn btn-sort" > Bán chạy </button> 
-            <div className = "content__product-control-price" >
-            <p className = "content__product-control-price-title" > Giá </p> 
-            <div className = "content__product-control-price-icon" > <FaChevronDown /> 
-            </div> 
+            {listSort.map(item => (
+                  <button className = "btn btn-sort" 
+                          style = {
+                              typeSortProduct === item.type ? {
+                                  backgroundColor: '#4848fc',
+                                  color: 'white'
+                              } : {}
+                          }
+                          onClick={
+                              () => handleTypeSortProduct(item.type)
+                          }                     
+                  > {item.title} </button> 
+            ))}
+            <div className='content__sort-price-product'>
+               <div className = "content__product-control-price">
+                  <p className = "content__product-control-price-title" > {typeSortPrice} </p> 
+                  <div className = "content__product-control-price-icon" > <FaChevronDown /> </div> 
+               </div>
+               
+               <div className='conten__product-control-price-list'>
+                  {listSortPrice.map(item => (
+                      <div className='conten__product-control-price-item'
+                           style={
+                               typeSortPrice === item.title ? {
+                                   color: 'red'
+                               } : {}
+                           }
+                           onClick={() => handleSortPriceProduct(item.type)}
+                           >
+                         {item.title}
+                      </div>
+                   ))}
+               </div>
             </div> 
             </div>                           
             </div> {
-                (!isLoadingTypeProduct) ?
-                <ReactLoading type = { 'balls' }
-                color = { 'red' }
-                height = { '20%' }
-                width = { '20%' }
-                /> : <div className = "content__product-container row" > { displayProducts } </div>
-            } 
+                isLoadingProduct === true ?
+                <Loading1 /> : <div>
+                 <div className = "content__product-container row" > { displayProducts } </div>
             <div>
             <ReactPaginate
             previousLabel = { <FaAngleLeft /> }
@@ -183,10 +207,12 @@ const Content = ({
             activeClassName = { "paginationActive" }
             /> 
             </div> 
+                </div>
+            } 
             </div> 
             </div> 
             </div>
-        } 
+        
         </div>
     )
 }

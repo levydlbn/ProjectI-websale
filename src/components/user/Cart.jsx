@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Header from '../Header'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import '../../static/css/base.css'
 import '../../static/css/cart.css'
@@ -8,6 +8,7 @@ import '../../static/css/cart.css'
 import { AiOutlineDelete, AiOutlineHeart } from "react-icons/ai"
 import Footer from '../Footer'
 import IconTelephone from '../IconTelephone'
+import Loading2 from '../loading/Loading2'
 
 const Cart = ({ cartItem, handleAddProduct, handleRemoveProduct, handleRemoveOneCategory, handleClearCart, nowUser }) => {
 
@@ -15,11 +16,21 @@ const Cart = ({ cartItem, handleAddProduct, handleRemoveProduct, handleRemoveOne
         // còn xóa tất cả 
     const navigate = useNavigate()
 
+    const [isLoadingCart, setIsLoadingCart] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoadingCart(false)
+        }, 2000)
+    })
+
     const handleCartConfirmation = () => {
         navigate('/user/checkout')
     }
 
     return ( 
+        <div>
+            {isLoadingCart === true ? <Loading2 /> :
         <div>
         <Header cartItem = { cartItem }
         nowUser = { nowUser }/> 
@@ -128,6 +139,8 @@ const Cart = ({ cartItem, handleAddProduct, handleRemoveProduct, handleRemoveOne
 
         </div> 
         <Footer />
+        </div>
+            }
         </div>
     )
 }

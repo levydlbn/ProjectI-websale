@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import classNames from 'classnames'
 
 import { FaHome, FaShoppingBag, FaAddressBook, FaUserPlus, FaProductHunt, FaShoppingCart, FaCogs, FaNewspaper } from 'react-icons/fa'
 import { BsGraphUp } from 'react-icons/bs'

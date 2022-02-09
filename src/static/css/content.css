@@ -136,7 +136,6 @@
     background-color: rgb(245, 245, 245);
     border-radius: 2px;
     box-shadow: 0 0 5px rgb(224, 224, 224);
-    overflow: hidden;
 }
 
 .content__product-control-sort {
@@ -144,8 +143,13 @@
     align-items: center;
 }
 
+.content__sort-price-product {
+    position: relative;
+}
+
 .content__product-control-price {
-    width: 140px;
+    position: relative;
+    width: 160px;
     height: 34px;
     display: flex;
     justify-content: space-between;
@@ -154,8 +158,8 @@
     margin: 0 5px;
 }
 
-.content__product-control-price:hover {
-    cursor: pointer;
+.content__sort-price-product:hover .conten__product-control-price-list {
+    display: block;
 }
 
 .content__product-control-price-title {
@@ -173,6 +177,42 @@
     color: var(--text-color);
 }
 
+.conten__product-control-price-list {
+    position: absolute;
+    left: 5px;
+    top: 36px;
+    background-color: white;
+    width: 160px;
+    height: 76px;
+    box-shadow: 0 2px 1rem 0 rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 2px;
+    font-size: 1.24rem;
+    animation: contentFadein ease 0.2s;
+    display: none;
+}
+
+.conten__product-control-price-list::after {
+    content: "";
+    position: absolute;
+    right: 4px;
+    top: -6px;
+    width: 140px;
+    height: 10px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.conten__product-control-price-item {
+    margin: 16px 10px;
+    color: #222;
+}
+
+.conten__product-control-price-item:hover {
+    cursor: pointer;
+    color: red;
+}
+
 .btn-sort.primary {
     margin: 0 5px;
     background-color: rgb(70, 40, 219);
@@ -184,6 +224,11 @@
     margin: 0 5px;
     background-color: white;
     color: var(--text-color);
+    transition-duration: 0.4s;
+}
+
+.btn-sort:hover {
+    background-color: #b8c3ff;
 }
 
 .content__product-control-pages {
@@ -334,4 +379,13 @@
 .paginationActive a {
     color: white;
     background-color: rgb(124, 124, 229);
+}
+
+@keyframes contentFadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

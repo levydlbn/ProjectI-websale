@@ -1,5 +1,5 @@
-import React, { useRef } from 'react'
-import { Link, useNavigate } from "react-router-dom";
+import React, { useRef, useEffect, useState } from 'react'
+import { Link } from "react-router-dom";
 
 import '../../static/css/base.css'
 import '../../static/css/signup.css'
@@ -8,21 +8,32 @@ import ImageIcon from "../../static/image/shop-icon.png"
 // import firebaseConfig from "../../firebase/firebase";
 import Footer from '../Footer';
 import IconTelephone from '../IconTelephone';
+import Loading from '../Loading';
 
-const Login = ({ listUser, handleLogin }) => {
+
+const Login = ({ listUser, handleLogin, handleLoading }) => {
 
     const emailRef = useRef()
     const passwordRef = useRef()
 
+    const [isLoading, setIsLoading] = useState(true)
 
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 1600)
+    })
 
 
     return ( 
+        <div>
+            {isLoading === true ? <Loading /> :
     <div className = "signup__page">
         <div className = "signup__page-header">
         <div>
         <Link to = "/"
-        className = "signup__page-header-logo">
+        className = "signup__page-header-logo"
+        onClick={() => handleLoading()}>
         <img src = { ImageIcon }
         alt = "icon shop"
         className = "signup__page-header-logo-icon" />
@@ -101,6 +112,8 @@ const Login = ({ listUser, handleLogin }) => {
         <div>
         <Footer />
         </div> 
+        </div>
+            }
         </div>
     )
 }

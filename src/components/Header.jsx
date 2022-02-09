@@ -10,7 +10,6 @@ import { FaSistrix, FaShoppingCart, FaRegBell } from "react-icons/fa"
 
 import '../static/css/base.css'
 import '../static/css/header.css'
-import { NavItem } from 'reactstrap';
 
 const dataNotification = [{
         thum: { ImgNoti1 },
@@ -30,7 +29,13 @@ const dataNotification = [{
 ]
 
 
-const Header = ({ cartItem, textSearchProductRef, handleSearchProduct, nowUser, handleLogout }) => {
+const Header = ({ cartItem, 
+              textSearchProductRef, 
+              handleSearchProduct, 
+              nowUser, 
+              handleLogout,
+              handleLoading,
+             }) => {
 
         const totalProductInCart = cartItem.reduce((numberProduct, item) => numberProduct + item.quantity, 0)
 
@@ -74,7 +79,7 @@ const Header = ({ cartItem, textSearchProductRef, handleSearchProduct, nowUser, 
                 } <div className = 'header__navbar-notification-list-btn' >Xem tất cả </div> 
                 </div> </div> 
                 <li> 
-                <Link to = "user/signup" > Đăng ký </Link>
+                <Link to = "/user/signup" > Đăng ký </Link>
                 </li>
                 <li> <Link to = "/user/login" > Đăng nhập </Link>
                 </li>
@@ -109,7 +114,7 @@ const Header = ({ cartItem, textSearchProductRef, handleSearchProduct, nowUser, 
                 <div className = "header__search-content" >
                 <div className = "header__search-logo" >
                 <Link to = "/"
-                className = "header__search-logo-link" >
+                className = "header__search-logo-link" onClick={ () => handleLoading() } >
                 <img src = { ImageIcon }
                 alt = "icon shop"
                 className = "header__search-logo-icon" />
