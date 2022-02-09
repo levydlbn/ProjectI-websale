@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import '../../static/css/base.css'
 import '../../static/css/cart.css'
 
-import { AiOutlineDelete, AiOutlineHeart } from "react-icons/ai"
+import { FaDemocrat, FaAddressCard } from "react-icons/fa"
 import Footer from '../Footer'
 import IconTelephone from '../IconTelephone'
 import Loading2 from '../loading/Loading2'
@@ -48,7 +48,7 @@ const Cart = ({ cartItem, handleAddProduct, handleRemoveProduct, handleRemoveOne
             cartItem.length >= 1 && ( 
                 <button className = "clear-cart-btn"
                 onClick = { handleClearCart }>
-                <AiOutlineDelete style = {
+                <FaDemocrat style = {
                     { fontSize: 20, marginRight: 3 }}/>
                     Xóa tất cả 
                 </button>
@@ -84,9 +84,9 @@ const Cart = ({ cartItem, handleAddProduct, handleRemoveProduct, handleRemoveOne
                 <div className = "cart__item-price" >
                 <p> { item.price } đ </p> 
                 <div className = "cart__item-price-icon">
-                <AiOutlineHeart />
+                <FaAddressCard />
                 <div className = "cart__item-price-icon-delete"
-                    onClick = {() => handleRemoveOneCategory(item) }> <AiOutlineDelete /> </div> 
+                    onClick = {() => handleRemoveOneCategory(item) }> <FaAddressCard /> </div> 
                 </div> 
                 </div> 
                 <div className = "cart__item-control-quantity">
