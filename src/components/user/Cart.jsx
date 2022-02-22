@@ -5,12 +5,12 @@ import { useNavigate } from 'react-router-dom'
 import '../../static/css/base.css'
 import '../../static/css/cart.css'
 
-import { FaDemocrat, FaAddressCard } from "react-icons/fa"
+import { AiOutlineDelete, AiOutlineHeart } from "react-icons/ai"
 import Footer from '../Footer'
 import IconTelephone from '../IconTelephone'
 import Loading2 from '../loading/Loading2'
 
-const Cart = ({ cartItem, handleAddProduct, handleRemoveProduct, handleRemoveOneCategory, handleClearCart, nowUser }) => {
+const Cart = ({ cartItem, handleAddProduct2, handleRemoveProduct, handleRemoveOneCategory, handleClearCart, nowUser }) => {
 
     const totalPrice = cartItem.reduce((price, item) => price + item.quantity * item.price, 0)
         // còn xóa tất cả 
@@ -48,7 +48,7 @@ const Cart = ({ cartItem, handleAddProduct, handleRemoveProduct, handleRemoveOne
             cartItem.length >= 1 && ( 
                 <button className = "clear-cart-btn"
                 onClick = { handleClearCart }>
-                <FaDemocrat style = {
+                <AiOutlineDelete style = {
                     { fontSize: 20, marginRight: 3 }}/>
                     Xóa tất cả 
                 </button>
@@ -84,9 +84,9 @@ const Cart = ({ cartItem, handleAddProduct, handleRemoveProduct, handleRemoveOne
                 <div className = "cart__item-price" >
                 <p> { item.price } đ </p> 
                 <div className = "cart__item-price-icon">
-                <FaAddressCard />
+                <AiOutlineHeart />
                 <div className = "cart__item-price-icon-delete"
-                    onClick = {() => handleRemoveOneCategory(item) }> <FaAddressCard /> </div> 
+                    onClick = {() => handleRemoveOneCategory(item) }> <AiOutlineDelete /> </div> 
                 </div> 
                 </div> 
                 <div className = "cart__item-control-quantity">
@@ -95,7 +95,7 @@ const Cart = ({ cartItem, handleAddProduct, handleRemoveProduct, handleRemoveOne
                      className = "cart__item-control-btn" > - </button> 
                      <p> { item.quantity } </p> 
                      <button onClick = {
-                    () => handleAddProduct(item) }
+                    () => handleAddProduct2(item) }
                 className = "cart__item-control-btn"> + </button> 
                 </div> 
                 </div> 

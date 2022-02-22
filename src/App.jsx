@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import ReactDOM from 'react-dom'
+import $ from 'jquery'
 import ReactLoading from 'react-loading'
 import AuthProvider from './auth/AuthContext';
 import Admin from './components/admin/Admin';
@@ -162,7 +164,42 @@ function App() {
             setCartItem(cartItem.map((item) => item.id === product.id ? {...ProductExits, quantity: ProductExits.quantity + 1 } : item))
         } else {
             setCartItem([...cartItem, {...product, quantity: 1 }])
-            alert("Thêm vào giỏ hàng thành công")
+        }
+        
+        const imgfly = <img src={product.thum} style={{
+            position: 'absolute',
+            zIndex: 10,
+            top: 0,
+            left: 0,
+            height: '60px',
+            width: '60px',
+            borderRadius: '2px',
+            border: '1px solid white',
+            transition: 'all 1s ease-in',
+       }} 
+      className="product_fly" alt='sdfsdf'/>
+      ReactDOM.render(imgfly, document.getElementById(product.id))
+      setTimeout(() => {
+          $(document).find('.product_fly').css({
+              'top': 246,
+              'left': 132,
+              'width': 26,
+              'height': 26,
+              'opacity': 0.3,
+              'transform': 'rotateZ(360deg)'
+          })
+          setTimeout(() => {
+            $(document).find('.product_fly').remove()
+          }, 1000);
+      }, 100);
+    }
+
+    const handleAddProduct2 = (product) => {
+        const ProductExits = cartItem.find((item) => item.id === product.id)
+        if (ProductExits) {
+            setCartItem(cartItem.map((item) => item.id === product.id ? {...ProductExits, quantity: ProductExits.quantity + 1 } : item))
+        } else {
+            setCartItem([...cartItem, {...product, quantity: 1 }])
         }
     }
 
@@ -229,6 +266,7 @@ function App() {
                 element = { <Home listProducts = { listProducts }
                 cartItem = { cartItem }
                 handleAddProduct = { handleAddProduct }
+
                 textSearchProductRef = { textSearchProductRef }
                 handleSearchProduct = { handleSearchProduct }
                 handleTypeProduct = { handleTypeProduct }
@@ -262,7 +300,7 @@ function App() {
                     element = { <Cart 
                         listProducts = { listProducts }
                         cartItem = { cartItem }
-                        handleAddProduct = { handleAddProduct }
+                        handleAddProduct2 = { handleAddProduct2 }
                         handleRemoveProduct = { handleRemoveProduct }
                         handleRemoveOneCategory = { handleRemoveOneCategory }
                         handleClearCart = { handleClearCart }
@@ -273,6 +311,7 @@ function App() {
                             listProducts = { listProducts }
                             getProductById = { getProductById }
                             handleAddProduct = { handleAddProduct }
+                            handleAddProduct2 = {handleAddProduct2}
                             handleRemoveProduct = { handleAddProduct }
                             />} />
             <Route path = "/user/checkout"

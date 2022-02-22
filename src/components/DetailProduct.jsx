@@ -14,7 +14,7 @@ import { FaCartPlus } from 'react-icons/fa'
 import IconTelephone from './IconTelephone'
 
 
-const DetailProduct = ({ cartItem, nowUser, listProducts, getProductById, handleAddProduct, handleRemoveProduct }) => {
+const DetailProduct = ({ cartItem, nowUser, listProducts, getProductById, handleAddProduct, handleRemoveProduct, handleAddProduct2 }) => {
 
         const { id } = useParams()
 
@@ -98,9 +98,8 @@ const DetailProduct = ({ cartItem, nowUser, listProducts, getProductById, handle
                 <div className = "detail__product-content-right-item" >
                 <div className = "detail__product-content-btn" >
                 <button
-                button
-                button onClick = {
-                    () => handleAddProduct(product)
+                 onClick = {
+                    () => handleAddProduct2(product)
                 }
                 className = "detail__product-content-btn-add-to-cart" >
                 <FaCartPlus style = {
@@ -110,7 +109,7 @@ const DetailProduct = ({ cartItem, nowUser, listProducts, getProductById, handle
                 </button> 
                 <Link to = "/user/CartProduct" >
                 <button onClick = {
-                    () => handleAddProduct(product)
+                    () => handleAddProduct2(product)
                 }
                 className = "detail__product-content-btn-buy" > Mua ngay </button>     
                 </Link> 

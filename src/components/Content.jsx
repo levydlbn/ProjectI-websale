@@ -84,9 +84,9 @@ const Content = ({
         }>
         <img src = { product.thum }
         alt = { product.name }
-        className = "product__img" / >
+        className = "product__img" />
         </Link>
-
+        <div id={product.id}></div>
         <div className = "product__info" >
         <div className = "product__info-describe" > { product.describe } 
         </div> 
@@ -118,9 +118,9 @@ const Content = ({
                 <div className = "content__header-image" >
                 <img src = { imgHeader }
                  alt = "Image heading"
-                  className = "content__header-image-item" / >
+                  className = "content__header-image-item" />
             </div>
-            </div >
+            </div>
 
             <div className = "main__content" >
             <div className = "content__sidebar col c-2" >
