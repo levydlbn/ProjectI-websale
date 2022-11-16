@@ -19,7 +19,7 @@
         "react-loader-spinner": "^5.0.10",
         "react-loading": "^2.0.3",
         "react-paginate": "^8.0.1",
-        "react-scripts": "4.0.3",
+        "react-scripts": "5.0.1",
         "recharts": "^2.1.6",
         "web-vitals": "^1.1.2"
     },
